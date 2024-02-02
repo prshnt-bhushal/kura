@@ -1,8 +1,8 @@
 import { auth } from './firebase-config.js';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
-import SignIn from './pages/SignIn.js';
 import Chat from './components/Chat.js';
+import Signup from './pages/SignUp.js';
 
 function App() {
   const welcomeText = 'Welcome to the chat app!';
@@ -15,7 +15,7 @@ function App() {
         <>
           {welcomeText}
           <br />
-          <SignIn />
+          <Signup />
         </>
       )}
     </>
