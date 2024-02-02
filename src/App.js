@@ -1,11 +1,24 @@
+import { auth } from './firebase-config.js';
+import { useAuthState } from 'react-firebase-hooks/auth';
+
+import SignIn from './pages/SignIn.js';
+import Chat from './components/Chat.js';
+
 function App() {
-  let message = '- meetha timi sanga <3';
+  const welcomeText = 'Welcome to the chat app!';
+  const [user] = useAuthState(auth);
   return (
     <>
-      <h1>Kura</h1>
-      <span>{message}</span>
+      {user ? (
+        <Chat />
+      ) : (
+        <>
+          {welcomeText}
+          <br />
+          <SignIn />
+        </>
+      )}
     </>
   );
 }
-
 export default App;
