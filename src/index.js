@@ -5,6 +5,7 @@ import App from './App';
 import Login from './pages/SignIn';
 import Profile from './pages/Profile';
 import { AuthProvider } from './methods/AuthProvider';
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>

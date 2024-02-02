@@ -5,7 +5,7 @@ import Chat from './components/Chat.js';
 import Signup from './pages/SignUp.js';
 
 function App() {
-  const welcomeText = 'Welcome to the chat app!';
+  const welcomeText = 'Welcome to the Kura!';
   const [user] = useAuthState(auth);
   return (
     <>
@@ -13,8 +13,7 @@ function App() {
         <Chat />
       ) : (
         <>
-          {welcomeText}
-          <br />
+          <h2 className="w-full text-center pt-3">{welcomeText}</h2>
           <Signup />
         </>
       )}

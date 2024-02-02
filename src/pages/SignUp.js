@@ -5,7 +5,6 @@ import { auth, provider } from '../firebase-config';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { signUp } from '../methods/firebase';
-import { set } from 'react-hook-form';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -16,6 +15,7 @@ const Signup = () => {
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider);
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
@@ -30,11 +30,11 @@ const Signup = () => {
   };
 
   return (
-    <>
-      <h2>Sign Up</h2>
-      <div>
-        {error ? <div>{error}</div> : null}
-        <form onSubmit={handleSubmit}>
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <h2 className="text-3xl font-semibold mb-4">Sign Up</h2>
+      <div className="mb-4">
+        {error && <div className="text-red-500 mb-2">{error}</div>}
+        <form onSubmit={handleSubmit} className="flex flex-col items-center">
           <input
             type="email"
             name="email"
@@ -42,6 +42,7 @@ const Signup = () => {
             placeholder="Your Email"
             required
             onChange={(e) => setEmail(e.target.value)}
+            className="mb-2 p-2 border border-gray-300 rounded"
           />
           <input
             type="password"
@@ -50,6 +51,7 @@ const Signup = () => {
             placeholder="Your Password"
             required
             onChange={(e) => setPassword(e.target.value)}
+            className="mb-2 p-2 border border-gray-300 rounded"
           />
           <input
             type="password"
@@ -58,17 +60,31 @@ const Signup = () => {
             placeholder="Confirm Password"
             required
             onChange={(e) => setPassword2(e.target.value)}
+            className="mb-2 p-2 border border-gray-300 rounded"
           />
-          <button type="submit">Submit</button>
+          <button
+            type="submit"
+            className="bg-blue-500 text-white p-2 rounded hover:bg-blue-700"
+          >
+            Submit
+          </button>
         </form>
-        <p>
-          already registered? <Link to="/login">Login</Link>
+        <p className="mt-4">
+          Already registered?{' '}
+          <Link to="/login" className="text-blue-500">
+            Login
+          </Link>
         </p>
       </div>
       <div>
-        <button onClick={signInWithGoogle}>Sign In With Google</button>
+        <button
+          onClick={signInWithGoogle}
+          className="bg-blue-500 text-white p-2 rounded hover:bg--700"
+        >
+          Sign In With Google
+        </button>
       </div>
-    </>
+    </div>
   );
 };
 
